@@ -1,0 +1,12 @@
+select 
+SMS_R_System.Name, 
+SMS_R_System.LastLogonUserName, 
+SMS_G_System_PROCESSOR.Name, 
+SMS_G_System_X86_PC_MEMORY.TotalPhysicalMemory, 
+SMS_G_System_DISK.Model, 
+SMS_G_System_DISK.Size, 
+SMS_G_System_OPERATING_SYSTEM.Caption, 
+SMS_G_System_OPERATING_SYSTEM.BuildNumber,
+SMS_G_System_COMPUTER_SYSTEM.Manufacturer,
+SMS_G_System_COMPUTER_SYSTEM.Model, 
+SMS_G_System_PC_BIOS.SerialNumber from  SMS_R_System inner join SMS_G_System_PROCESSOR on SMS_G_System_PROCESSOR.ResourceID = SMS_R_System.ResourceId inner join SMS_G_System_X86_PC_MEMORY on SMS_G_System_X86_PC_MEMORY.ResourceID = SMS_R_System.ResourceId inner join SMS_G_System_OPERATING_SYSTEM on SMS_G_System_OPERATING_SYSTEM.ResourceID = SMS_R_System.ResourceId inner join SMS_G_System_COMPUTER_SYSTEM on SMS_G_System_COMPUTER_SYSTEM.ResourceID = SMS_R_System.ResourceId inner join SMS_G_System_DISK on SMS_G_System_DISK.ResourceID = SMS_R_System.ResourceId inner join SMS_G_System_PC_BIOS on SMS_G_System_PC_BIOS.ResourceId = SMS_R_System.ResourceId
