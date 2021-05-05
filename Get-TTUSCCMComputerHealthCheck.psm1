@@ -1,4 +1,31 @@
 function Get-TTUSCCMComputerHealthCheck {
+    <#
+		.SYNOPSIS
+			Create an excel spreadsheet with pivot table of a Support Area based on the minimum hardware spec of ITS.
+    
+		.DESCRIPTION
+			Using SCCM's PowerShell module and ImportExcel library, this Get-TTUSCCMComputerHealthCheck creates an excel spreadsheet with a pivot table of the computers within a support area based on ITS's minimum hardware spec.  Note that the General Sheet is the only one without duplicates.  The duplicates are from additional storage entries.  To install ImportExcel, run the following: install-module ImportExcel
+    
+		.PARAMETER SupportArea
+			This parameter is manatory and for picking the SA# to pull computers from to evaluate.
+
+        .PARAMETER SaveFile
+            This is the file name that you'd like to call the spreadsheet.  If path is not included, it will put the file in whatever directory you call the function in.
+
+        .PARAMETER MinProcGen
+            This is an integer to specify the Intel generation that you'd like to use as the minimum processor allowed. (Default: 6th gen)
+
+        .PARAMETER MinMemSize
+            This is an integer to specify the minimum amount of ram that a computer should have.  Measured in GB. (Default: 8GB)
+			
+		.EXAMPLE
+			Get-TTUSCCMComputerHealthCheck -SupportArea SA4 - SaveFile .\2021_report.xlsx
+    
+		.NOTES
+			5/4/2210
+			-Created
+	#>
+
     param (
         [Parameter(Mandatory=$true)]
         [ValidateSet("SA0","SA1","SA2","SA3","SA4","SA5","SA6")]
